@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jelajah Norma: Menjadi Warga Masyarakat Berkarakter Pancasila</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#DC2626',
+                            redDark: '#991B1B',
+                            gold: '#F59E0B',
+                            goldDark: '#D97706',
+                            blue: '#1E3A8A',
+                            blueLight: '#3B82F6',
+                            cream: '#FEF3C7',
+                            softBg: '#F8FAFC'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F1F5F9;
+            overflow-x: hidden;
+        }
+        .btn-bounce {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-bounce:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .btn-bounce:active {
+            transform: translateY(1px) scale(0.98);
+        }
+        .card-glow:hover {
+            box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.2), 0 8px 10px -6px rgba(220, 38, 38, 0.1);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.03); }
+        }
+        .animate-pulse-slow {
+            animation: pulseGlow 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col justify-between selection:bg-brand-red selection:text-white">
+
+    <!-- HEADER / NAVBAR -->
+    <header class="bg-gradient-to-r from-brand-red via-red-600 to-brand-redDark text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('welcome')">
+                <div class="bg-white p-2 rounded-full shadow-md text-brand-red flex items-center justify-center w-10 h-10">
+                    <i class="fa-solid me-0 fa-shield-halved text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight tracking-wide">JELAJAH NORMA</h1>
+                    <p class="text-xs text-yellow-200 font-medium hidden sm:block">Pendidikan Pancasila Kelas VII / Fase D</p>
+                </div>
+            </div>
+
+            <!-- Quick Navigation Menu Buttons -->
+            <nav class="hidden md:flex items-center space-x-2">
+                <button onclick="navigateTo('main-menu')" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-white/10 hover:bg-white/20 transition flex items-center space-x-1.5">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Menu Utama</span>
+                </button>
+                <button onclick="showInstructionsModal()" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-brand-gold hover:bg-yellow-500 text-slate-900 transition flex items-center space-x-1.5 shadow">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>Petunjuk</span>
+                </button>
+                <button id="soundToggleBtn" onclick="toggleSound()" class="p-2 rounded-full bg-white/10 hover:bg-white/20 transition text-sm">
+                    <i class="fa-solid fa-volume-high" id="soundIcon"></i>
+                </button>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="flex md:hidden items-center space-x-2">
+                <button id="soundToggleBtnMobile" onclick="toggleSound()" class="p-2 rounded-full bg-white/10 text-sm">
+                    <i class="fa-solid fa-volume-high" id="soundIconMobile"></i>
+                </button>
+                <button onclick="navigateTo('main-menu')" class="p-2 rounded-lg bg-white/20 text-white hover:bg-white/30">
+                    <i class="fa-solid fa-grid-2 text-xl"></i> Menu
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+
+        <!-- 1. HALAMAN PEMBUKA / WELCOME -->
+        <section id="welcome-screen" class="min-h-[80vh] flex flex-col justify-center items-center text-center py-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-2xl border-4 border-brand-gold/30 max-w-4xl w-full relative overflow-hidden">
+                <!-- Background Patriotic Banner Accent -->
+                <div class="absolute -top-12 -right-12 w-40 h-40 bg-brand-red rounded-full opacity-10 blur-xl"></div>
+                <div class="absolute -bottom-12 -left-12 w-40 h-40 bg-brand-blue rounded-full opacity-10 blur-xl"></div>
+
+                <div class="inline-flex items-center space-x-2 bg-red-100 text-brand-red px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold mb-4 border border-red-200">
+                    <i class="fa-solid fa-flag text-brand-red"></i>
+                    <span>Media Pembelajaran Interaktif Pancasila</span>
+                </div>
+
+                <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-3">
+                    JELAJAH NORMA
+                </h1>
+                <p class="text-lg sm:text-xl font-bold text-brand-blue mb-4">
+                    Menjadi Warga Masyarakat yang Berkarakter Pancasila
+                </p>
+
+                <!-- Hero Graphic Illustration -->
+                <div class="my-6 relative flex justify-center">
+                    <div class="w-full max-w-md bg-gradient-to-br from-blue-50 to-red-50 p-6 rounded-2xl border border-slate-200 shadow-inner flex flex-col items-center justify-center">
+                        <div class="flex items-center justify-center space-x-4 mb-3">
+                            <div class="w-16 h-16 sm:w-20 sm:h-20 bg-brand-red text-white rounded-full flex items-center justify-center text-3xl shadow-lg transform -rotate-6">
+                                👨‍🎓
+                            </div>
+                            <div class="w-20 h-20 sm:w-24 sm:h-24 bg-brand-gold text-slate-900 rounded-full flex items-center justify-center text-4xl shadow-xl z-10 animate-pulse-slow">
+                                🦅
+                            </div>
+                            <div class="w-16 h-16 sm:w-20 sm:h-20 bg-brand-blue text-white rounded-full flex items-center justify-center text-3xl shadow-lg transform rotate-6">
+                                👩‍🎓
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-sm font-semibold text-slate-600 italic">
+                            "Mewujudkan Generasi Muda Taat Norma, Bergotong Royong & Berakhlak Mulia"
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Identity Badge -->
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 max-w-md mx-auto mb-8 text-xs sm:text-sm text-slate-600 flex justify-around">
+                    <div><span class="font-bold text-slate-800">Mata Pelajaran:</span> Pendidikan Pancasila</div>
+                    <div><span class="font-bold text-slate-800">Kelas:</span> VII / Fase D</div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button onclick="navigateTo('main-menu')" class="btn-bounce w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-brand-red to-red-600 text-white text-lg font-bold rounded-2xl shadow-lg hover:shadow-red-500/30 flex items-center justify-center space-x-3">
+                        <i class="fa-solid fa-rocket text-yellow-300"></i>
+                        <span>Mulai Belajar</span>
+                    </button>
+                    <button onclick="showInstructionsModal()" class="btn-bounce w-full sm:w-auto px-6 py-4 bg-white text-slate-700 border-2 border-slate-300 hover:border-brand-blue text-lg font-bold rounded-2xl shadow-sm flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-book-open text-brand-blue"></i>
+                        <span>Petunjuk Penggunaan</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. MENU UTAMA -->
+        <section id="main-menu-screen" class="hidden py-4">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-2">Pilih Menu Pembelajaran</h2>
+                <p class="text-slate-600">Pilih salah satu modul di bawah ini untuk memulai petualangan belajarmu!</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                
+                <!-- Card 1: Tujuan Pembelajaran -->
+                <div onclick="navigateTo('tujuan-screen')" class="btn-bounce card-glow bg-white p-6 rounded-2xl shadow-md border border-slate-100 cursor-pointer flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-blue-100 text-brand-blue rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:bg-brand-blue group-hover:text-white transition">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 mb-1">Tujuan Pembelajaran</h3>
+                    <p class="text-xs text-slate-500">Capaian & target kompetensi siswa.</p>
+                </div>
+
+                <!-- Card 2: Materi Pembelajaran -->
+                <div onclick="navigateTo('materi-screen')" class="btn-bounce card-glow bg-white p-6 rounded-2xl shadow-md border border-slate-100 cursor-pointer flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-red-100 text-brand-red rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:bg-brand-red group-hover:text-white transition">
+                        <i class="fa-solid fa-book-bookmark"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 mb-1">Materi Pembelajaran</h3>
+                    <p class="text-xs text-slate-500">Konsep, fungsi, jenis norma & contohnya.</p>
+                </div>
+
+                <!-- Card 3: Video Pembelajaran -->
+                <div onclick="navigateTo('video-screen')" class="btn-bounce card-glow bg-white p-6 rounded-2xl shadow-md border border-slate-100 cursor-pointer flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-amber-100 text-brand-goldDark rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:bg-brand-gold group-hover:text-slate-900 transition">
+                        <i class="fa-solid fa-circle-play"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 mb-1">Video Pembelajaran</h3>
+                    <p class="text-xs text-slate-500">Penjelasan multimedia interaktif.</p>
+                </div>
+
+                <!-- Card 4: Studi Kasus -->
+                <div onclick="navigateTo('studi-kasus-screen')" class="btn-bounce card-glow bg-white p-6 rounded-2xl shadow-md border border-slate-100 cursor-pointer flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:bg-purple-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-magnifying-glass-location"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 mb-1">Studi Kasus</h3>
+                    <p class="text-xs text-slate-500">Analisis situasi nyata dalam masyarakat.</p>
+                </div>
+
+                <!-- Card 5: Permainan Edukatif -->
+                <div onclick="navigateTo('game-screen')" class="btn-bounce card-glow bg-white p-6 rounded-2xl shadow-md border border-slate-100 cursor-pointer flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:bg-emerald-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 mb-1">Permainan Edukatif</h3>
+                    <p class="text-xs text-slate-500">Game "Pilih Tindakan yang Tepat".</p>
+                </div>
+
+                <!-- Card 6: Kuis Interaktif -->
+                <div onclick="navigateTo('kuis-screen')" class="btn-bounce card-glow bg-white p-6 rounded-2xl shadow-md border border-slate-100 cursor-pointer flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:bg-rose-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-square-check"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 mb-1">Kuis Interaktif</h3>
+                    <p class="text-xs text-slate-500">Uji pemahaman 10 soal evaluasi.</p>
+                </div>
+
+                <!-- Card 7: Refleksi Pembelajaran -->
+                <div onclick="navigateTo('refleksi-screen')" class="btn-bounce card-glow bg-white p-6 rounded-2xl shadow-md border border-slate-100 cursor-pointer flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-teal-100 text-teal-600 rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:bg-teal-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 mb-1">Refleksi Pembelajaran</h3>
+                    <p class="text-xs text-slate-500">Ulasan & komitmen diri peserta didik.</p>
+                </div>
+
+                <!-- Card 8: Petunjuk Penggunaan -->
+                <div onclick="showInstructionsModal()" class="btn-bounce card-glow bg-white p-6 rounded-2xl shadow-md border border-slate-100 cursor-pointer flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-slate-100 text-slate-600 rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:bg-slate-700 group-hover:text-white transition">
+                        <i class="fa-solid fa-circle-question"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 mb-1">Petunjuk Penggunaan</h3>
+                    <p class="text-xs text-slate-500">Panduan navigasi & fitur media.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. TUJUAN PEMBELAJARAN -->
+        <section id="tujuan-screen" class="hidden py-4">
+            <div class="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-100">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-blue-100 text-brand-blue rounded-xl flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-slate-800">Tujuan Pembelajaran</h2>
+                    </div>
+                    <button onclick="navigateTo('main-menu')" class="text-slate-400 hover:text-slate-600 transition">
+                        <i class="fa-solid fa-xmark text-2xl"></i>
+                    </button>
+                </div>
+
+                <!-- Main Purpose Box -->
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-brand-blue p-6 rounded-r-2xl mb-8">
+                    <p class="text-base sm:text-lg text-slate-800 leading-relaxed font-medium">
+                        "Melalui kegiatan pembelajaran interaktif, peserta didik mampu mengidentifikasi, menjelaskan, dan menampilkan tindakan yang sesuai dengan norma dalam kehidupan masyarakat serta menunjukkan perilaku yang mencerminkan nilai-nilai Pancasila."
+                    </p>
+                </div>
+
+                <!-- Target Indikator -->
+                <h3 class="font-bold text-lg text-slate-800 mb-4 flex items-center">
+                    <i class="fa-solid fa-list-check text-brand-goldDark mr-2"></i> Indikator Capaian Pembelajaran:
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                    <div class="flex items-start space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <div class="w-8 h-8 bg-brand-red text-white rounded-full flex-shrink-0 flex items-center justify-center font-bold text-sm">1</div>
+                        <p class="text-sm text-slate-700">Menjelaskan pengertian, fungsi, dan jenis-jenis norma yang berlaku di masyarakat.</p>
+                    </div>
+                    <div class="flex items-start space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <div class="w-8 h-8 bg-brand-gold text-slate-900 rounded-full flex-shrink-0 flex items-center justify-center font-bold text-sm">2</div>
+                        <p class="text-sm text-slate-700">Menganalisis perbedaan norma agama, kesusilaan, kesopanan, dan hukum.</p>
+                    </div>
+                    <div class="flex items-start space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <div class="w-8 h-8 bg-brand-blue text-white rounded-full flex-shrink-0 flex items-center justify-center font-bold text-sm">3</div>
+                        <p class="text-sm text-slate-700">Menampilkan contoh tindakan taat norma di lingkungan keluarga, sekolah, dan masyarakat.</p>
+                    </div>
+                    <div class="flex items-start space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <div class="w-8 h-8 bg-emerald-600 text-white rounded-full flex-shrink-0 flex items-center justify-center font-bold text-sm">4</div>
+                        <p class="text-sm text-slate-700">Menganalisis akibat pelanggaran norma dan berkomitmen menjadi warga berkarakter Pancasila.</p>
+                    </div>
+                </div>
+
+                <div class="flex justify-end space-x-3">
+                    <button onclick="navigateTo('main-menu')" class="px-5 py-2.5 bg-slate-200 text-slate-700 rounded-xl font-semibold hover:bg-slate-300 transition">
+                        Kembali ke Menu
+                    </button>
+                    <button onclick="navigateTo('materi-screen')" class="px-5 py-2.5 bg-brand-red text-white rounded-xl font-semibold hover:bg-red-700 transition flex items-center space-x-2">
+                        <span>Mulai Materi</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. MATERI PEMBELAJARAN -->
+        <section id="materi-screen" class="hidden py-4">
+            <div class="max-w-5xl mx-auto bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-100">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-red-100 text-brand-red rounded-xl flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-book-open text-brand-red"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-800">Materi Pembelajaran</h2>
+                            <p class="text-xs text-slate-500">Norma dalam Kehidupan Masyarakat</p>
+                        </div>
+                    </div>
+                    <button onclick="navigateTo('main-menu')" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-semibold text-sm transition flex items-center space-x-1">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Menu</span>
+                    </button>
+                </div>
+
+                <!-- Tab Navigation for Material Sections -->
+                <div class="flex overflow-x-auto space-x-2 pb-2 mb-6 border-b border-slate-200 custom-scrollbar">
+                    <button onclick="switchMateriTab('tab-pengertian')" id="btn-tab-pengertian" class="materi-tab-btn px-4 py-2 rounded-xl text-sm font-bold whitespace-nowrap bg-brand-red text-white transition">
+                        1. Pengertian & Fungsi
+                    </button>
+                    <button onclick="switchMateriTab('tab-jenis')" id="btn-tab-jenis" class="materi-tab-btn px-4 py-2 rounded-xl text-sm font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+                        2. Jenis-Jenis Norma
+                    </button>
+                    <button onclick="switchMateriTab('tab-contoh')" id="btn-tab-contoh" class="materi-tab-btn px-4 py-2 rounded-xl text-sm font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+                        3. Contoh Perilaku
+                    </button>
+                    <button onclick="switchMateriTab('tab-dampak')" id="btn-tab-dampak" class="materi-tab-btn px-4 py-2 rounded-xl text-sm font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+                        4. Dampak Pelanggaran
+                    </button>
+                </div>
+
+                <!-- TAB CONTENT 1: PENGERTIAN & FUNGSI -->
+                <div id="tab-pengertian" class="materi-content space-y-6">
+                    <div class="bg-red-50 p-6 rounded-2xl border border-red-100">
+                        <h3 class="text-xl font-bold text-brand-red mb-3 flex items-center">
+                            <i class="fa-solid fa-lightbulb mr-2"></i> Apa itu Norma?
+                        </h3>
+                        <p class="text-slate-700 leading-relaxed mb-4">
+                            <strong>Norma</strong> adalah kaidah, aturan, atau pedoman perilaku yang dibuat untuk mengatur kehidupan manusia dalam bermasyarakat. Norma berisi perintah, larangan, serta sanksi bagi yang melanggarnya agar tercipta ketertiban, keadilan, dan kedamaian.
+                        </p>
+                    </div>
+
+                    <h4 class="font-bold text-lg text-slate-800">Fungsi & Tujuan Norma dalam Masyarakat:</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl text-center">
+                            <div class="w-12 h-12 bg-blue-100 text-brand-blue rounded-full flex items-center justify-center text-xl mx-auto mb-3">
+                                ⚖️
+                            </div>
+                            <h5 class="font-bold text-slate-800 mb-1">Menciptakan Ketertiban</h5>
+                            <p class="text-xs text-slate-600">Menjaga keseimbangan dan keteraturan dalam berinteraksi sehari-hari.</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl text-center">
+                            <div class="w-12 h-12 bg-amber-100 text-brand-goldDark rounded-full flex items-center justify-center text-xl mx-auto mb-3">
+                                🤝
+                            </div>
+                            <h5 class="font-bold text-slate-800 mb-1">Mencegah Konflik</h5>
+                            <p class="text-xs text-slate-600">Mencegah terjadinya perselisihan dan benturan kepentingan antarwarga.</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl text-center">
+                            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-xl mx-auto mb-3">
+                                🛡️
+                            </div>
+                            <h5 class="font-bold text-slate-800 mb-1">Memberi Keadilan</h5>
+                            <p class="text-xs text-slate-600">Melindungi hak-hak setiap individu agar diperlakukan secara adil.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB CONTENT 2: JENIS-JENIS NORMA -->
+                <div id="tab-jenis" class="materi-content hidden space-y-6">
+                    <p class="text-sm text-slate-600 mb-4">Terdapat 4 jenis norma utama yang berlaku dalam kehidupan masyarakat Indonesia. Klik setiap kartu di bawah untuk mempelajari lebih lanjut!</p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Norma Agama -->
+                        <div class="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 p-5 rounded-2xl">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <span class="text-3xl">🕌</span>
+                                <div>
+                                    <h4 class="font-bold text-slate-900">Norma Agama</h4>
+                                    <span class="text-xs bg-amber-200 text-amber-900 px-2 py-0.5 rounded-full font-semibold">Sumber: Wahyu Tuhan</span>
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-700 leading-relaxed mb-2">
+                                Aturan hidup yang bersumber dari wahyu Tuhan Yang Maha Esa yang tercantum dalam kitab suci.
+                            </p>
+                            <div class="text-xs text-amber-800 font-semibold bg-white/80 p-2 rounded-lg border border-amber-200">
+                                📌 Sanksi: Dosa & pahala di akhirat kelak.
+                            </div>
+                        </div>
+
+                        <!-- Norma Kesusilaan -->
+                        <div class="bg-gradient-to-br from-pink-50 to-rose-50 border border-pink-200 p-5 rounded-2xl">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <span class="text-3xl">💖</span>
+                                <div>
+                                    <h4 class="font-bold text-slate-900">Norma Kesusilaan</h4>
+                                    <span class="text-xs bg-pink-200 text-pink-900 px-2 py-0.5 rounded-full font-semibold">Sumber: Hati Nurani</span>
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-700 leading-relaxed mb-2">
+                                Aturan hidup yang berasal dari suara hati nurani manusia tentang kebaikan dan keburukan.
+                            </p>
+                            <div class="text-xs text-pink-800 font-semibold bg-white/80 p-2 rounded-lg border border-pink-200">
+                                📌 Sanksi: Rasa penyesalan, gelisah, dan rasa bersalah.
+                            </div>
+                        </div>
+
+                        <!-- Norma Kesopanan -->
+                        <div class="bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200 p-5 rounded-2xl">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <span class="text-3xl">🙏</span>
+                                <div>
+                                    <h4 class="font-bold text-slate-900">Norma Kesopanan</h4>
+                                    <span class="text-xs bg-blue-200 text-blue-900 px-2 py-0.5 rounded-full font-semibold">Sumber: Pergaulan Masyarakat</span>
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-700 leading-relaxed mb-2">
+                                Aturan yang timbul dari kesepakatan dan kebiasaan dalam tata pergaulan masyarakat setempat.
+                            </p>
+                            <div class="text-xs text-blue-800 font-semibold bg-white/80 p-2 rounded-lg border border-blue-200">
+                                📌 Sanksi: Dicemooh, dikucilkan, atau ditegur masyarakat.
+                            </div>
+                        </div>
+
+                        <!-- Norma Hukum -->
+                        <div class="bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200 p-5 rounded-2xl">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <span class="text-3xl">🏛️</span>
+                                <div>
+                                    <h4 class="font-bold text-slate-900">Norma Hukum</h4>
+                                    <span class="text-xs bg-purple-200 text-purple-900 px-2 py-0.5 rounded-full font-semibold">Sumber: Negara / Pemerintah</span>
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-700 leading-relaxed mb-2">
+                                Peraturan resmi yang dibuat oleh lembaga negara bermewenang dan bersifat memaksa.
+                            </p>
+                            <div class="text-xs text-purple-800 font-semibold bg-white/80 p-2 rounded-lg border border-purple-200">
+                                📌 Sanksi: Tegas & nyata (Denda, penjara, kurungan).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB CONTENT 3: CONTOH PERILAKU -->
+                <div id="tab-contoh" class="materi-content hidden space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Lingkungan Keluarga -->
+                        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+                            <div class="text-3xl mb-2 text-center">🏡</div>
+                            <h4 class="font-bold text-center text-slate-800 mb-3">Lingkungan Keluarga</h4>
+                            <ul class="text-xs text-slate-700 space-y-2 list-disc pl-4">
+                                <li>Hormat dan patuh pada orang tua.</li>
+                                <li>Berpamitan dan bersalaman saat hendak pergi keluar rumah.</li>
+                                <li>Menjaga nama baik keluarga.</li>
+                                <li>Melaksanakan ibadah bersama di rumah.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Lingkungan Sekolah -->
+                        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+                            <div class="text-3xl mb-2 text-center">🏫</div>
+                            <h4 class="font-bold text-center text-slate-800 mb-3">Lingkungan Sekolah</h4>
+                            <ul class="text-xs text-slate-700 space-y-2 list-disc pl-4">
+                                <li>Datang ke sekolah tepat waktu dan berpakaian rapi.</li>
+                                <li>Menghormati guru dan menyapa teman dengan ramah.</li>
+                                <li>Mengerjakan tugas jujur tanpa menyontek.</li>
+                                <li>Menjaga kebersihan kelas dan fasilitas sekolah.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Lingkungan Masyarakat -->
+                        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+                            <div class="text-3xl mb-2 text-center">🌆</div>
+                            <h4 class="font-bold text-center text-slate-800 mb-3">Lingkungan Masyarakat</h4>
+                            <ul class="text-xs text-slate-700 space-y-2 list-disc pl-4">
+                                <li>Menjaga ketenangan dan tidak membuat kegaduhan.</li>
+                                <li>Mengikuti kegiatan gotong royong dan kerja bakti.</li>
+                                <li>Menjaga kebersihan fasilitas umum.</li>
+                                <li>Menaati peraturan lalu lintas saat berkendara.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB CONTENT 4: DAMPAK PELANGGARAN -->
+                <div id="tab-dampak" class="materi-content hidden space-y-6">
+                    <div class="bg-red-50 border-l-4 border-brand-red p-4 rounded-r-xl">
+                        <h4 class="font-bold text-brand-red text-base mb-1">Akibat Melanggar Norma:</h4>
+                        <p class="text-xs text-slate-700">Pelanggaran norma tidak hanya merugikan diri sendiri tetapi juga mengganggu keharmonisan hidup bersama.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 border border-slate-200 rounded-xl bg-white">
+                            <span class="text-brand-red font-bold text-sm block mb-1"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Dampak Bagi Diri Sendiri:</span>
+                            <ul class="text-xs text-slate-600 list-disc pl-4 space-y-1">
+                                <li>Mendapatkan sanksi hukum/sosial.</li>
+                                <li>Merasa tidak tenang dan dikejar rasa bersalah.</li>
+                                <li>Kehilangan kepercayaan dari orang lain.</li>
+                            </ul>
+                        </div>
+                        <div class="p-4 border border-slate-200 rounded-xl bg-white">
+                            <span class="text-brand-red font-bold text-sm block mb-1"><i class="fa-solid fa-users-slash mr-1"></i> Dampak Bagi Masyarakat:</span>
+                            <ul class="text-xs text-slate-600 list-disc pl-4 space-y-1">
+                                <li>Terjadinya kekacauan dan ketidakamanan.</li>
+                                <li>Penyebab timbulnya konflik antarwarga.</li>
+                                <li>Merusak tatanan nilai kebangsaan dan Pancasila.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-50 p-5 rounded-2xl border border-amber-200 text-center">
+                        <h4 class="font-bold text-slate-900 mb-2">💡 Pentingnya Menaati Norma</h4>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            Menaati norma adalah wujud nyata pengamalan **Pancasila**. Dengan taat norma, kita turut menciptakan bangsa Indonesia yang aman, damai, bermartabat, dan penuh rasa toleransi!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer Action Buttons -->
+                <div class="mt-8 pt-4 border-t border-slate-100 flex justify-between items-center">
+                    <button onclick="navigateTo('tujuan-screen')" class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl font-semibold text-sm hover:bg-slate-200 transition">
+                        <i class="fa-solid fa-arrow-left mr-1"></i> Tujuan
+                    </button>
+                    <button onclick="navigateTo('studi-kasus-screen')" class="px-5 py-2.5 bg-brand-red text-white rounded-xl font-semibold text-sm hover:bg-red-700 transition flex items-center space-x-1">
+                        <span>Lanjut ke Studi Kasus</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. VIDEO PEMBELAJARAN -->
+        <section id="video-screen" class="hidden py-4">
+            <div class="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-100">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-amber-100 text-brand-goldDark rounded-xl flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-slate-800">Video Pembelajaran</h2>
+                    </div>
+                    <button onclick="navigateTo('main-menu')" class="text-slate-400 hover:text-slate-600 transition">
+                        <i class="fa-solid fa-xmark text-2xl"></i>
+                    </button>
+                </div>
+
+                <!-- Video Simulator Component -->
+                <div class="bg-slate-900 rounded-2xl overflow-hidden shadow-2xl mb-6 relative">
+                    <div class="aspect-video bg-slate-800 flex flex-col items-center justify-center p-6 text-center text-white relative">
+                        <!-- Play Overlay Simulation -->
+                        <div id="videoPlaceholder" class="flex flex-col items-center">
+                            <div onclick="playSimulatedVideo()" class="w-20 h-20 bg-brand-red text-white rounded-full flex items-center justify-center text-3xl shadow-lg cursor-pointer hover:scale-110 transition btn-bounce mb-4">
+                                <i class="fa-solid fa-play ml-1"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-1">Simulasi Video: Norma dalam Masyarakat</h3>
+                            <p class="text-xs text-slate-400 max-w-md">Klik tombol play di atas untuk memutar rangkuman video interaktif mengenai norma dan nilai-nilai Pancasila.</p>
+                        </div>
+
+                        <!-- Active Video State Animation Mockup -->
+                        <div id="videoPlayingState" class="hidden w-full h-full flex flex-col justify-between p-4 bg-gradient-to-b from-slate-900/60 via-transparent to-slate-900/90">
+                            <div class="flex justify-between items-center text-xs text-slate-300">
+                                <span><i class="fa-solid fa-circle text-red-500 animate-pulse text-[10px] mr-1"></i> Memutar Rangkuman</span>
+                                <span>SMP Kelas 7 / Fase D</span>
+                            </div>
+
+                            <div id="videoCaption" class="bg-black/70 backdrop-blur p-4 rounded-xl text-sm font-semibold text-yellow-300 border border-white/10 max-w-lg mx-auto">
+                                "Norma kesopanan mengajarkan kita menghormati sesama dan menjaga keramahan dalam berinteraksi."
+                            </div>
+
+                            <div class="w-full bg-white/20 h-2 rounded-full overflow-hidden">
+                                <div id="videoProgressBar" class="bg-brand-red h-full w-0 transition-all duration-300"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-6">
+                    <h4 class="font-bold text-slate-800 text-sm mb-1">Poin Penting Video:</h4>
+                    <p class="text-xs text-slate-600">Norma merupakan kesepakatan bersama yang harus dijunjung tinggi oleh seluruh warga negara guna mewujudkan keharmonisan berbangsa dan bernegara.</p>
+                </div>
+
+                <div class="flex justify-between">
+                    <button onclick="navigateTo('materi-screen')" class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl font-semibold text-sm hover:bg-slate-200">
+                        <i class="fa-solid fa-arrow-left mr-1"></i> Kembali ke Materi
+                    </button>
+                    <button onclick="navigateTo('game-screen')" class="px-5 py-2.5 bg-brand-gold text-slate-900 font-bold rounded-xl text-sm hover:bg-yellow-500 transition">
+                        Mainkan Game <i class="fa-solid fa-gamepad ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. STUDI KASUS INTERAKTIF -->
+        <section id="studi-kasus-screen" class="hidden py-4">
+            <div class="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-100">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-magnifying-glass-location"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-800">Studi Kasus Nyata</h2>
+                            <p class="text-xs text-slate-500">Pilih tindakan terbaik dalam situasi kehidupan sehari-hari!</p>
+                        </div>
+                    </div>
+                    <span id="caseProgress" class="text-xs font-bold bg-purple-100 text-purple-700 px-3 py-1 rounded-full">
+                        Kasus 1 dari 6
+                    </span>
+                </div>
+
+                <!-- Case Box Container -->
+                <div id="caseBox" class="space-y-6">
+                    <!-- Dynamic Content Injected via JS -->
+                </div>
+
+                <div class="mt-8 pt-4 border-t border-slate-100 flex justify-between">
+                    <button onclick="prevCase()" id="prevCaseBtn" class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl font-semibold text-sm hover:bg-slate-200 transition disabled:opacity-50">
+                        <i class="fa-solid fa-arrow-left mr-1"></i> Sebelumnya
+                    </button>
+                    <button onclick="nextCase()" id="nextCaseBtn" class="px-5 py-2.5 bg-purple-600 text-white rounded-xl font-semibold text-sm hover:bg-purple-700 transition">
+                        Kasus Selanjutnya <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. PERMAINAN EDUKATIF -->
+        <section id="game-screen" class="hidden py-4">
+            <div class="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-100 relative">
+                
+                <!-- Game Header -->
+                <div class="flex flex-col sm:flex-row justify-between items-center border-b border-slate-100 pb-4 mb-6 gap-3">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-gamepad"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-800">Pilih Tindakan yang Tepat</h2>
+                            <p class="text-xs text-slate-500">Game Edukasi Pengambilan Keputusan Taat Norma</p>
+                        </div>
+                    </div>
+
+                    <!-- Score Badge -->
+                    <div class="flex items-center space-x-4 bg-emerald-50 border border-emerald-200 px-4 py-2 rounded-2xl">
+                        <div class="text-center">
+                            <span class="text-[10px] text-emerald-600 font-bold uppercase block">Skor Kamu</span>
+                            <span id="gameScore" class="text-2xl font-extrabold text-emerald-700">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Canvas / Activity Box -->
+                <div id="gameContainer" class="bg-gradient-to-b from-slate-50 to-emerald-50/30 rounded-2xl p-6 border border-slate-200 min-h-[350px] flex flex-col justify-between">
+                    <!-- Dynamic Game Level Content -->
+                </div>
+
+                <div class="mt-6 flex justify-between items-center">
+                    <button onclick="resetGame()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-xl text-xs font-bold transition">
+                        <i class="fa-solid fa-rotate-right mr-1"></i> Ulangi Game
+                    </button>
+                    <button onclick="navigateTo('kuis-screen')" class="px-5 py-2.5 bg-emerald-600 text-white rounded-xl font-bold text-sm hover:bg-emerald-700 shadow-md">
+                        Lanjut ke Kuis <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. KUIS INTERAKTIF -->
+        <section id="kuis-screen" class="hidden py-4">
+            <div class="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-100">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-square-check"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-800">Kuis Evaluasi Norma</h2>
+                            <p class="text-xs text-slate-500">Uji Pemahaman Materi (10 Soal Pilihan Ganda)</p>
+                        </div>
+                    </div>
+                    <span id="quizProgress" class="text-xs font-bold bg-rose-100 text-rose-700 px-3 py-1.5 rounded-full">
+                        Soal 1 / 10
+                    </span>
+                </div>
+
+                <!-- Quiz Questions Box -->
+                <div id="quizBox">
+                    <!-- Question & Options Injected via JS -->
+                </div>
+
+                <!-- Quiz Result Screen (Hidden Initially) -->
+                <div id="quizResultBox" class="hidden text-center py-6">
+                    <div class="w-24 h-24 rounded-full mx-auto flex items-center justify-center text-5xl mb-4 shadow-xl" id="resultBadge">
+                        🏆
+                    </div>
+                    <h3 class="text-3xl font-extrabold text-slate-900 mb-1">Hasil Kuis Kamu</h3>
+                    <p class="text-sm text-slate-500 mb-6" id="resultSubtitle">Pendidikan Pancasila Kelas VII</p>
+
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 max-w-md mx-auto mb-6">
+                        <div class="text-5xl font-black text-brand-red mb-2" id="finalScoreText">0</div>
+                        <p class="text-xs text-slate-500 mb-4 font-semibold">NILAI AKHIR</p>
+
+                        <div class="grid grid-cols-2 gap-4 border-t border-slate-200 pt-4 text-sm">
+                            <div class="text-center">
+                                <span class="text-xs text-slate-500 block">Jawaban Benar</span>
+                                <span id="correctAnswersText" class="font-bold text-emerald-600 text-lg">0</span>
+                            </div>
+                            <div class="text-center">
+                                <span class="text-xs text-slate-500 block">Jawaban Salah</span>
+                                <span id="wrongAnswersText" class="font-bold text-rose-600 text-lg">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Motivational Message -->
+                    <div id="motivationBox" class="p-4 rounded-xl max-w-md mx-auto text-sm font-medium mb-8 bg-blue-50 border border-blue-200 text-blue-900">
+                        <!-- Dynamic Text -->
+                    </div>
+
+                    <div class="flex justify-center space-x-4">
+                        <button onclick="restartQuiz()" class="px-6 py-3 bg-slate-200 text-slate-700 font-bold rounded-xl hover:bg-slate-300 transition">
+                            <i class="fa-solid fa-rotate-right mr-1"></i> Coba Lagi
+                        </button>
+                        <button onclick="navigateTo('refleksi-screen')" class="px-6 py-3 bg-brand-red text-white font-bold rounded-xl hover:bg-red-700 transition">
+                            Ke Menu Refleksi <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. REFLEKSI PEMBELAJARAN -->
+        <section id="refleksi-screen" class="hidden py-4">
+            <div class="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-100">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-teal-100 text-teal-600 rounded-xl flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-800">Refleksi Pembelajaran</h2>
+                            <p class="text-xs text-slate-500">Tuliskan pengalaman dan komitmen dirimu dalam menaati norma!</p>
+                        </div>
+                    </div>
+                    <button onclick="navigateTo('main-menu')" class="text-slate-400 hover:text-slate-600">
+                        <i class="fa-solid fa-xmark text-2xl"></i>
+                    </button>
+                </div>
+
+                <form id="refleksiForm" onsubmit="handleRefleksiSubmit(event)" class="space-y-6">
+                    <div>
+                        <label class="block font-bold text-sm text-slate-800 mb-2">1. Apa pemahaman utama yang kamu dapatkan mengenai pentingnya norma?</label>
+                        <textarea required rows="3" class="w-full p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-sm" placeholder="Tuliskan pemahamanmu di sini..."></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold text-sm text-slate-800 mb-2">2. Norma apa yang paling sering kamu terapkan dalam kehidupan sehari-hari? Berikan contohnya!</label>
+                        <textarea required rows="3" class="w-full p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-sm" placeholder="Contoh: Norma kesopanan saat menyapa guru..."></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold text-sm text-slate-800 mb-2">3. Apa tindakan nyata yang akan kamu lakukan jika melihat seseorang melanggar norma di sekitarmu?</label>
+                        <textarea required rows="3" class="w-full p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-sm" placeholder="Tuliskan tindakan bijakmu..."></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold text-sm text-slate-800 mb-2">4. Mengapa sebagai warga negara berkarakter Pancasila kita wajib menaati norma?</label>
+                        <textarea required rows="3" class="w-full p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-sm" placeholder="Tuliskan pendapatmu..."></textarea>
+                    </div>
+
+                    <div class="pt-4 flex justify-end space-x-3">
+                        <button type="button" onclick="navigateTo('main-menu')" class="px-5 py-2.5 bg-slate-200 text-slate-700 font-bold rounded-xl text-sm">
+                            Batal
+                        </button>
+                        <button type="submit" class="px-6 py-2.5 bg-teal-600 text-white font-bold rounded-xl text-sm hover:bg-teal-700 shadow-md flex items-center space-x-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Simpan & Selesai</span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Saved Reflection Confirmation View -->
+                <div id="refleksiSavedMsg" class="hidden text-center py-8">
+                    <div class="w-16 h-16 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-2">Terima Kasih! Refleksi Berhasil Disimpan</h3>
+                    <p class="text-xs text-slate-500 max-w-md mx-auto mb-6">Kamu telah menyelesaikan seluruh rangkaian Media Pembelajaran Interaktif "Jelajah Norma". Teruslah menjadi warga negara yang taat norma dan berkarakter Pancasila!</p>
+                    <button onclick="navigateTo('main-menu')" class="px-6 py-3 bg-brand-red text-white font-bold rounded-xl text-sm shadow-lg">
+                        Kembali ke Menu Utama
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 text-center text-xs">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="font-semibold text-slate-300 mb-1">Media Pembelajaran Interaktif (PMI) Pendidikan Pancasila</p>
+            <p>© 2026 Kelas VII / Fase D SMP — "Jelajah Norma: Menjadi Warga Masyarakat yang Berkarakter Pancasila"</p>
+        </div>
+    </footer>
+
+    <!-- MODAL PETUNJUK PENGGUNAAN -->
+    <div id="instructionsModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative">
+            <button onclick="hideInstructionsModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center space-x-3 mb-4 border-b border-slate-100 pb-3">
+                <div class="w-10 h-10 bg-brand-gold/20 text-brand-goldDark rounded-xl flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-circle-info"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800">Petunjuk Penggunaan Media</h3>
+            </div>
+
+            <div class="space-y-4 text-xs text-slate-600 leading-relaxed max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
+                <div class="flex items-start space-x-2">
+                    <span class="font-bold text-brand-red">1.</span>
+                    <p>Gunakan tombol navigasi di **Menu Utama** untuk mengakses setiap fitur pembelajaran.</p>
+                </div>
+                <div class="flex items-start space-x-2">
+                    <span class="font-bold text-brand-red">2.</span>
+                    <p>Pelajari modul **Materi Pembelajaran** dan **Video** secara berurutan untuk memahami konsep norma secara mendalam.</p>
+                </div>
+                <div class="flex items-start space-x-2">
+                    <span class="font-bold text-brand-red">3.</span>
+                    <p>Uji daya nalarmu di menu **Studi Kasus** dan **Permainan Edukatif** untuk melatih pengambilan keputusan taat norma.</p>
+                </div>
+                <div class="flex items-start space-x-2">
+                    <span class="font-bold text-brand-red">4.</span>
+                    <p>Kerjakan 10 soal pada **Kuis Interaktif** untuk mengetahui skor pemahamanmu secara otomatis.</p>
+                </div>
+                <div class="flex items-start space-x-2">
+                    <span class="font-bold text-brand-red">5.</span>
+                    <p>Tuliskan impresi dan komitmenmu di menu **Refleksi Pembelajaran** sebagai penutup kegiatan.</p>
+                </div>
+            </div>
+
+            <div class="mt-6 pt-3 border-t border-slate-100 text-right">
+                <button onclick="hideInstructionsModal()" class="px-5 py-2 bg-brand-red text-white text-xs font-bold rounded-xl">
+                    Saya Mengerti
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT CODE -->
+    <script>
+        /* ==========================================================================
+           AUDIO SYSTEM (Web Audio API Synthesizer - No External Asset Depend)
+           ========================================================================== */
+        let isSoundMuted = false;
+        let audioCtx = null;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        function playSound(type) {
+            if (isSoundMuted) return;
+            try {
+                initAudio();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                const now = audioCtx.currentTime;
+
+                if (type === 'correct') {
+                    // Upbeat Arpeggio Tone
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now); // C5
+                    osc.frequency.setValueAtTime(659.25, now + 0.1); // E5
+                    osc.frequency.setValueAtTime(783.99, now + 0.2); // G5
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+                    osc.start(now);
+                    osc.stop(now + 0.4);
+                } else if (type === 'wrong') {
+                    // Low Buzzer Tone
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, now);
+                    osc.frequency.setValueAtTime(164.81, now + 0.15);
+                    gain.gain.setValueAtTime(0.3, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+                    osc.start(now);
+                    osc.stop(now + 0.35);
+                } else if (type === 'click') {
+                    // Short Click
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(800, now);
+                    gain.gain.setValueAtTime(0.1, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+                    osc.start(now);
+                    osc.stop(now + 0.05);
+                }
+            } catch (e) {
+                console.log('Audio Context Error:', e);
+            }
+        }
+
+        function toggleSound() {
+            isSoundMuted = !isSoundMuted;
+            const icon = document.getElementById('soundIcon');
+            const iconMobile = document.getElementById('soundIconMobile');
+            if (isSoundMuted) {
+                icon.className = "fa-solid fa-volume-xmark";
+                iconMobile.className = "fa-solid fa-volume-xmark";
+            } else {
+                icon.className = "fa-solid fa-volume-high";
+                iconMobile.className = "fa-solid fa-volume-high";
+                playSound('click');
+            }
+        }
+
+        /* ==========================================================================
+           NAVIGATION SYSTEM
+           ========================================================================== */
+        const screens = [
+            'welcome-screen',
+            'main-menu-screen',
+            'tujuan-screen',
+            'materi-screen',
+            'video-screen',
+            'studi-kasus-screen',
+            'game-screen',
+            'kuis-screen',
+            'refleksi-screen'
+        ];
+
+        function navigateTo(targetScreenId) {
+            playSound('click');
+            screens.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.add('hidden');
+            });
+
+            const target = document.getElementById(targetScreenId);
+            if (target) {
+                target.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function showInstructionsModal() {
+            playSound('click');
+            document.getElementById('instructionsModal').classList.remove('hidden');
+        }
+
+        function hideInstructionsModal() {
+            playSound('click');
+            document.getElementById('instructionsModal').classList.add('hidden');
+        }
+
+        /* ==========================================================================
+           MATERI TAB SYSTEM
+           ========================================================================== */
+        function switchMateriTab(tabId) {
+            playSound('click');
+            document.querySelectorAll('.materi-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.materi-tab-btn').forEach(btn => {
+                btn.className = "materi-tab-btn px-4 py-2 rounded-xl text-sm font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 transition";
+            });
+
+            document.getElementById(tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            if (activeBtn) {
+                activeBtn.className = "materi-tab-btn px-4 py-2 rounded-xl text-sm font-bold whitespace-nowrap bg-brand-red text-white transition shadow";
+            }
+        }
+
+        /* ==========================================================================
+           SIMULATED VIDEO CONTROLLER
+           ========================================================================== */
+        let isVideoPlaying = false;
+        let videoTimer = null;
+
+        function playSimulatedVideo() {
+            playSound('click');
+            document.getElementById('videoPlaceholder').classList.add('hidden');
+            document.getElementById('videoPlayingState').classList.remove('hidden');
+
+            const bar = document.getElementById('videoProgressBar');
+            const caption = document.getElementById('videoCaption');
+
+            const captions = [
+                "1. Norma adalah aturan yang mengatur tata kehidupan bermasyarakat.",
+                "2. Norma Agama & Kesusilaan menuntun akhlak dan kebersihan hati nurani.",
+                "3. Norma Kesopanan menjaga keharmonisan tata krama antar sesama.",
+                "4. Norma Hukum menjamin keadilan dan kepastian hak setiap warga negara.",
+                "5. Menghormati norma = Mewujudkan Profil Pelajar Pancasila!"
+            ];
+
+            let index = 0;
+            let progress = 0;
+
+            if (videoTimer) clearInterval(videoTimer);
+
+            videoTimer = setInterval(() => {
+                progress += 2;
+                bar.style.width = progress + '%';
+
+                if (progress % 20 === 0 && index < captions.length) {
+                    caption.innerText = captions[index];
+                    index++;
+                }
+
+                if (progress >= 100) {
+                    clearInterval(videoTimer);
+                    setTimeout(() => {
+                        document.getElementById('videoPlaceholder').classList.remove('hidden');
+                        document.getElementById('videoPlayingState').classList.add('hidden');
+                        bar.style.width = '0%';
+                    }, 1000);
+                }
+            }, 100);
+        }
+
+        /* ==========================================================================
+           STUDI KASUS DATA & ENGINE
+           ========================================================================== */
+        const caseData = [
+            {
+                title: "Membuang Sampah Sembarangan",
+                icon: "🚮",
+                situation: "Kamu melihat seorang teman sekelas melemparkan bungkus plastik makanan di halaman sekolah padahal tempat sampah berjarak sangat dekat.",
+                options: [
+                    {
+                        text: "Menegur dengan ramah dan mengajarinya membuang ke tempat sampah.",
+                        correct: true,
+                        explanation: "Tindakan ini menunjukkan sikap peduli lingkungan dan kebiasaan taat norma.",
+                        norma: "Norma Kesopanan & Kesusilaan",
+                        pancasila: "Sila ke-2 & Sila ke-5"
+                    },
+                    {
+                        text: "Mendiamkan saja karena merasa itu bukan urusan pribadi.",
+                        correct: false,
+                        explanation: "Mendiamkan pelanggaran norma dapat membuat kebiasaan buruk terus berulang.",
+                        norma: "-",
+                        pancasila: "-"
+                    },
+                    {
+                        text: "Ikut-ikutan membuang sampah sembarangan.",
+                        correct: false,
+                        explanation: "Ini merupakan contoh tindakan melanggar norma kebersihan lingkungan.",
+                        norma: "-",
+                        pancasila: "-"
+                    }
+                ]
+            },
+            {
+                title: "Menemukan Dompet Terjatuh",
+                icon: "👛",
+                situation: "Saat berjalan pulang sekolah, kamu menemukan dompet berisi uang dan kartu identitas milik orang lain tergeletak di trotoar.",
+                options: [
+                    {
+                        text: "Mengambil uangnya dan membuang dompetnya.",
+                        correct: false,
+                        explanation: "Tindakan ini melanggar norma hukum dan norma kesusilaan (kejujuran).",
+                        norma: "-",
+                        pancasila: "-"
+                    },
+                    {
+                        text: "Menyerahkan dompet tersebut ke kantor polisi atau pihak berwenang.",
+                        correct: true,
+                        explanation: "Mengembalikan barang milik orang lain adalah cerminan kejujuran nurani dan rasa tanggung jawab.",
+                        norma: "Norma Kesusilaan & Hukum",
+                        pancasila: "Sila ke-1 & Sila ke-2"
+                    },
+                    {
+                        text: "Meninggalkan dompet tersebut tanpa peduli.",
+                        correct: false,
+                        explanation: "Kurang menunjukkan empati dan kepedulian terhadap kemalangan orang lain.",
+                        norma: "-",
+                        pancasila: "-"
+                    }
+                ]
+            },
+            {
+                title: "Menyerobot Antrean",
+                icon: "🚶‍♂️🚶‍♀️",
+                situation: "Antrean di kantin sekolah sangat panjang. Tiba-tiba seorang temanmu langsung menyelonong masuk ke depan tanpa mengantre.",
+                options: [
+                    {
+                        text: "Mengingatkan teman agar mengantre dari belakang dengan sopan.",
+                        correct: true,
+                        explanation: "Mengantre adalah wujud menghargai hak orang lain dan menaati norma kesopanan.",
+                        norma: "Norma Kesopanan",
+                        pancasila: "Sila ke-5 (Keadilan Sosial)"
+                    },
+                    {
+                        text: "Mengikuti langkah teman tersebut untuk ikut menyelonong.",
+                        correct: false,
+                        explanation: "Menyerobot antrean merampas hak orang lain yang telah menunggu lebih dulu.",
+                        norma: "-",
+                        pancasila: "-"
+                    },
+                    {
+                        text: "Marah-marah dan memukul teman tersebut.",
+                        correct: false,
+                        explanation: "Kekerasan melanggar norma hukum dan tidak menyelesaikan masalah secara bijak.",
+                        norma: "-",
+                        pancasila: "-"
+                    }
+                ]
+            },
+            {
+                title: "Tetangga Mengalami Musibah",
+                icon: "🏠",
+                situation: "Rumah tetangga dekatmu mengalami musibah kebanjiran dan mereka membutuhkan bantuan untuk evakuasi barang.",
+                options: [
+                    {
+                        text: "Pura-pura tidak tahu dan tetap bermain video game.",
+                        correct: false,
+                        explanation: "Sikap acuh tak acuh bertentangan dengan nilai gotong royong.",
+                        norma: "-",
+                        pancasila: "-"
+                    },
+                    {
+                        text: "Segera membantu mengangkat barang sesuai kemampuan bersama warga lain.",
+                        correct: true,
+                        explanation: "Membantu tetangga yang tertimpa musibah mencerminkan norma sosial dan nilai solidaritas Pancasila.",
+                        norma: "Norma Kesopanan & Kesusilaan",
+                        pancasila: "Sila ke-2 & Sila ke-3"
+                    },
+                    {
+                        text: "Menonton saja dari jauh tanpa memberikan bantuan.",
+                        correct: false,
+                        explanation: "Hanya menjadi penonton kurang menunjukkan kepedulian sosial.",
+                        norma: "-",
+                        pancasila: "-"
+                    }
+                ]
+            },
+            {
+                title: "Berkendara Tanpa Helm",
+                icon: "🛵",
+                situation: "Teman ajak kamu dibonceng sepeda motor ke warung dekat rumah tanpa mengenakan helm karena merasa jaraknya dekat.",
+                options: [
+                    {
+                        text: "Menolak dibonceng dan menyarankan memakai helm terlebih dahulu.",
+                        correct: true,
+                        explanation: "Memakai helm adalah aturan keselamatan yang diatur resmi dalam undang-undang lalu lintas.",
+                        norma: "Norma Hukum",
+                        pancasila: "Sila ke-5 (Ketaatan Peraturan)"
+                    },
+                    {
+                        text: "Ikut saja karena jaraknya dekat dan tidak ada polisi.",
+                        correct: false,
+                        explanation: "Menaati hukum harus dilakukan demi keselamatan, bukan sekadar takut pada petugas.",
+                        norma: "-",
+                        pancasila: "-"
+                    },
+                    {
+                        text: "Mengejek teman yang mengingatkan keselamatan.",
+                        correct: false,
+                        explanation: "Tindakan acuh terhadap keselamatan merugikan diri sendiri dan orang lain.",
+                        norma: "-",
+                        pancasila: "-"
+                    }
+                ]
+            },
+            {
+                title: "Melihat Perundungan (Bullying)",
+                icon: "🛑",
+                situation: "Di belakang kelas, kamu melihat seorang murid baru sedang diejek dan diintimidasi oleh beberapa siswa senior.",
+                options: [
+                    {
+                        text: "Segera melaporkan kejadian tersebut kepada Wali Kelas atau Guru BK.",
+                        correct: true,
+                        explanation: "Melindungi korban perundungan adalah kewajiban moril dan menaati aturan sekolah.",
+                        norma: "Norma Kesusilaan & Hukum",
+                        pancasila: "Sila ke-2 (Kemanusiaan yang Adil & Beradab)"
+                    },
+                    {
+                        text: "Sorak-sorai mendukung aksi senior tersebut.",
+                        correct: false,
+                        explanation: "Mendukung perundungan adalah bentuk pelanggaran berat terhadap nilai kemanusiaan.",
+                        norma: "-",
+                        pancasila: "-"
+                    },
+                    {
+                        text: "Pergi menjauh dan tidak menceritakannya kepada siapapun.",
+                        correct: false,
+                        explanation: "Sikap pembiaran dapat membahayakan keselamatan mental dan fisik korban.",
+                        norma: "-",
+                        pancasila: "-"
+                    }
+                ]
+            }
+        ];
+
+        let currentCaseIdx = 0;
+
+        function renderCase() {
+            const c = caseData[currentCaseIdx];
+            document.getElementById('caseProgress').innerText = `Kasus ${currentCaseIdx + 1} dari ${caseData.length}`;
+            
+            let html = `
+                <div class="bg-gradient-to-r from-purple-50 to-indigo-50 p-6 rounded-2xl border border-purple-100">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <span class="text-4xl">${c.icon}</span>
+                        <h3 class="text-xl font-bold text-purple-900">${c.title}</h3>
+                    </div>
+                    <p class="text-sm text-slate-700 leading-relaxed font-medium">${c.situation}</p>
+                </div>
+
+                <div class="space-y-3">
+                    <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">Pilih Tindakan yang Akan Kamu Lakukan:</p>
+            `;
+
+            c.options.forEach((opt, idx) => {
+                html += `
+                    <button onclick="checkCaseOption(${idx})" class="case-opt-btn w-full p-4 rounded-xl border border-slate-200 hover:border-purple-400 bg-white hover:bg-purple-50/50 text-left transition flex items-start space-x-3">
+                        <span class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">${String.fromCharCode(65 + idx)}</span>
+                        <span class="text-xs sm:text-sm text-slate-800 font-semibold">${opt.text}</span>
+                    </button>
+                `;
+            });
+
+            html += `</div><div id="caseFeedback" class="hidden"></div>`;
+
+            document.getElementById('caseBox').innerHTML = html;
+            document.getElementById('prevCaseBtn').disabled = currentCaseIdx === 0;
+            document.getElementById('nextCaseBtn').innerText = currentCaseIdx === caseData.length - 1 ? "Selesai Studi Kasus" : "Kasus Selanjutnya";
+        }
+
+        function checkCaseOption(optIdx) {
+            const c = caseData[currentCaseIdx];
+            const selected = c.options[optIdx];
+            const fbBox = document.getElementById('caseFeedback');
+
+            if (selected.correct) {
+                playSound('correct');
+                fbBox.className = "p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 mt-4 space-y-2 block animate-fade-in";
+                fbBox.innerHTML = `
+                    <div class="flex items-center space-x-2 font-bold text-emerald-700 text-sm">
+                        <i class="fa-solid fa-circle-check text-base"></i>
+                        <span>Tindakan Kamu Sangat Tepat!</span>
+                    </div>
+                    <p class="text-xs leading-relaxed">${selected.explanation}</p>
+                    <div class="flex flex-wrap gap-2 pt-2 text-[11px] font-semibold">
+                        <span class="bg-emerald-200 text-emerald-900 px-2.5 py-0.5 rounded-full">Norma: ${selected.norma}</span>
+                        <span class="bg-emerald-200 text-emerald-900 px-2.5 py-0.5 rounded-full">Nilai Pancasila: ${selected.pancasila}</span>
+                    </div>
+                `;
+            } else {
+                playSound('wrong');
+                fbBox.className = "p-5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-900 mt-4 space-y-2 block animate-fade-in";
+                fbBox.innerHTML = `
+                    <div class="flex items-center space-x-2 font-bold text-rose-700 text-sm">
+                        <i class="fa-solid fa-circle-xmark text-base"></i>
+                        <span>Tindakan Kurang Tepat!</span>
+                    </div>
+                    <p class="text-xs leading-relaxed">${selected.explanation}</p>
+                    <p class="text-xs font-semibold text-rose-800">Cobalah pilih opsi lain yang sesuai dengan norma dan karakter Pancasila!</p>
+                `;
+            }
+        }
+
+        function prevCase() {
+            if (currentCaseIdx > 0) {
+                currentCaseIdx--;
+                renderCase();
+            }
+        }
+
+        function nextCase() {
+            if (currentCaseIdx < caseData.length - 1) {
+                currentCaseIdx++;
+                renderCase();
+            } else {
+                navigateTo('game-screen');
+            }
+        }
+
+        /* ==========================================================================
+           PERMAINAN EDUKATIF GAME ENGINE
+           ========================================================================== */
+        const gameLevels = [
+            {
+                img: "🏫",
+                title: "Situasi di Sekolah",
+                question: "Guru masuk ke dalam kelas. Apakah tindakan taat norma kesopanan yang paling benar?",
+                options: [
+                    { text: "Berdiri, memberikan salam, dan menyapa guru dengan ramah.", correct: true },
+                    { text: "Tetap duduk dan mengobrol keras dengan teman.", correct: false },
+                    { text: "Keluar kelas tanpa izin guru.", correct: false }
+                ]
+            },
+            {
+                img: "🚦",
+                title: "Situasi Penyeberangan Jalan",
+                question: "Kamu ingin menyeberang jalan raya yang ramai kendaraan.",
+                options: [
+                    { text: "Lari langsung menyeberang sembarangan.", correct: false },
+                    { text: "Menyeberang di Zebracross / JPO dan memperhatikan lampu lalu lintas.", correct: true },
+                    { text: "Menerobos saat kendaraan melaju kencang.", correct: false }
+                ]
+            },
+            {
+                img: "🕌",
+                title: "Situasi di Tempat Ibadah",
+                question: "Seseorang sedang melangsungkan ibadah di tempat ibadah dekat rumahmu.",
+                options: [
+                    { text: "Menjaga ketenangan dan tidak membuat kebisingan.", correct: true },
+                    { text: "Membunyikan petasan di depan tempat ibadah.", correct: false },
+                    { text: "Berteriak-teriak saat bermain di sekitarnya.", correct: false }
+                ]
+            }
+        ];
+
+        let currentGameIdx = 0;
+        let gameScore = 0;
+
+        function renderGameLevel() {
+            const lvl = gameLevels[currentGameIdx];
+            const container = document.getElementById('gameContainer');
+
+            if (currentGameIdx >= gameLevels.length) {
+                container.innerHTML = `
+                    <div class="text-center py-8">
+                        <div class="text-6xl mb-3">🎉</div>
+                        <h3 class="text-2xl font-bold text-emerald-800 mb-2">Permainan Selesai!</h3>
+                        <p class="text-sm text-slate-600 mb-6">Kamu telah berhasil menyelesaikan semua level simulasi tindakan taat norma!</p>
+                        <button onclick="resetGame()" class="px-6 py-2.5 bg-emerald-600 text-white rounded-xl font-bold text-sm hover:bg-emerald-700">
+                            Main Lagi
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = `
+                <div>
+                    <div class="flex items-center space-x-2 text-xs font-bold text-emerald-600 mb-2">
+                        <span>Level ${currentGameIdx + 1} dari ${gameLevels.length}</span>
+                    </div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <span class="text-4xl">${lvl.img}</span>
+                        <h3 class="text-lg font-bold text-slate-800">${lvl.title}</h3>
+                    </div>
+                    <p class="text-sm text-slate-700 font-semibold mb-6 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">${lvl.question}</p>
+                    
+                    <div class="space-y-3">
+            `;
+
+            lvl.options.forEach((opt, idx) => {
+                html += `
+                    <button onclick="handleGameAnswer(${opt.correct})" class="w-full p-4 rounded-xl bg-white hover:bg-emerald-100/50 border border-slate-200 text-left font-semibold text-xs sm:text-sm text-slate-800 transition flex items-center justify-between group">
+                        <span>${opt.text}</span>
+                        <i class="fa-solid fa-chevron-right text-slate-300 group-hover:text-emerald-600"></i>
+                    </button>
+                `;
+            });
+
+            html += `</div></div>`;
+            container.innerHTML = html;
+        }
+
+        function handleGameAnswer(isCorrect) {
+            if (isCorrect) {
+                playSound('correct');
+                gameScore += 100;
+                document.getElementById('gameScore').innerText = gameScore;
+                currentGameIdx++;
+                renderGameLevel();
+            } else {
+                playSound('wrong');
+                alert('Tindakan tersebut belum sesuai dengan norma! Coba lagi.');
+            }
+        }
+
+        function resetGame() {
+            currentGameIdx = 0;
+            gameScore = 0;
+            document.getElementById('gameScore').innerText = gameScore;
+            renderGameLevel();
+        }
+
+        /* ==========================================================================
+           KUIS INTERAKTIF ENGINE (10 SOAL)
+           ========================================================================== */
+        const quizQuestions = [
+            {
+                q: "Aturan atau pedoman hidup yang dibuat untuk mengatur tingkah laku manusia dalam masyarakat disebut...",
+                options: ["Hukum adat", "Norma", "Tradisi", "Kebiasaan"],
+                answer: 1
+            },
+            {
+                q: "Norma yang bersumber dari wahyu Tuhan Yang Maha Esa dan tercantum dalam kitab suci dinamakan norma...",
+                options: ["Kesopanan", "Kesusilaan", "Agama", "Hukum"],
+                answer: 2
+            },
+            {
+                q: "Berikut ini yang merupakan contoh penerapan norma kesopanan di lingkungan sekolah adalah...",
+                options: [
+                    "Menyapa dan memberi salam saat bertemu guru",
+                    "Membayar denda pelanggaran lalu lintas",
+                    "Melaksanakan ibadah sholat / doa tepat waktu",
+                    "Jujur saat mengerjakan ujian nasional"
+                ],
+                answer: 0
+            },
+            {
+                q: "Norma yang memiliki sanksi paling tegas dan nyata berupa kurungan atau denda adalah norma...",
+                options: ["Kesusilaan", "Hukum", "Kesopanan", "Agama"],
+                answer: 1
+            },
+            {
+                q: "Mengembalikan barang milik orang lain yang kita temukan di jalan merupakan perwujudan norma...",
+                options: ["Kesopanan", "Hukum", "Kesusilaan", "Adat"],
+                answer: 2
+            },
+            {
+                q: "Seseorang yang melanggar norma kesusilaan biasanya akan merasakan sanksi berupa...",
+                options: ["Siksaan fisik", "Rasa penyesalan dan penyesalan nurani", "Denda uang", "Hukuman penjara"],
+                answer: 1
+            },
+            {
+                q: "Perilaku yang mencerminkan ketaatan terhadap norma hukum saat berkendara di jalan raya adalah...",
+                options: ["Menerobos lampu merah saat sepi", "Mengenakan helm standar bagi pengendara motor", "Mengendarai motor tanpa SIM", "Membunyikan klakson keras di zona rumah sakit"],
+                answer: 1
+            },
+            {
+                q: "Mengapa kita harus menaati norma dalam kehidupan bermasyarakat?",
+                options: ["Agar dipuji oleh teman-teman", "Untuk menciptakan ketertiban, keadilan, dan kedamaian bersama", "Agar terhindar dari tugas sekolah", "Hanya karena takut pada polisi"],
+                answer: 1
+            },
+            {
+                q: "Sikap tidak mau mengantre saat membeli makanan di kantin sekolah merupakan bentuk pelanggaran norma...",
+                options: ["Agama", "Kesusilaan", "Kesopanan", "Hukum Pidana"],
+                answer: 2
+            },
+            {
+                q: "Menaati norma dalam kehidupan sehari-hari merupakan wujud nyata pengamalan nilai-nilai...",
+                options: ["Pancasila", "Sumpah Pemuda", "UUD 1945", "Proklamasi"],
+                answer: 0
+            }
+        ];
+
+        let currentQuizIdx = 0;
+        let quizUserAnswers = new Array(quizQuestions.length).fill(null);
+
+        function renderQuizQuestion() {
+            const q = quizQuestions[currentQuizIdx];
+            document.getElementById('quizProgress').innerText = `Soal ${currentQuizIdx + 1} / ${quizQuestions.length}`;
+
+            let html = `
+                <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl mb-6">
+                    <span class="text-xs font-bold text-rose-600 block mb-1">Pertanyaan ${currentQuizIdx + 1}:</span>
+                    <h3 class="text-base sm:text-lg font-bold text-slate-800">${q.q}</h3>
+                </div>
+
+                <div class="space-y-3 mb-6">
+            `;
+
+            q.options.forEach((opt, idx) => {
+                const isSelected = quizUserAnswers[currentQuizIdx] === idx;
+                const btnClass = isSelected 
+                    ? "bg-rose-50 border-rose-500 text-rose-900 ring-2 ring-rose-300"
+                    : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50";
+
+                html += `
+                    <button onclick="selectQuizAnswer(${idx})" class="w-full p-4 rounded-xl border ${btnClass} text-left text-xs sm:text-sm font-semibold transition flex items-center space-x-3">
+                        <span class="w-7 h-7 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-xs font-bold">${String.fromCharCode(65 + idx)}</span>
+                        <span>${opt}</span>
+                    </button>
+                `;
+            });
+
+            html += `</div>
+                <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+                    <button onclick="prevQuiz()" ${currentQuizIdx === 0 ? 'disabled' : ''} class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl text-xs font-bold disabled:opacity-50">
+                        <i class="fa-solid fa-arrow-left mr-1"></i> Soal Sebelumnya
+                    </button>
+                    <button onclick="nextQuiz()" class="px-6 py-2.5 bg-rose-600 text-white rounded-xl text-xs font-bold hover:bg-rose-700 shadow">
+                        ${currentQuizIdx === quizQuestions.length - 1 ? 'Selesai & Lihat Hasil' : 'Soal Selanjutnya '} <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            `;
+
+            document.getElementById('quizBox').innerHTML = html;
+        }
+
+        function selectQuizAnswer(optIdx) {
+            playSound('click');
+            quizUserAnswers[currentQuizIdx] = optIdx;
+            renderQuizQuestion();
+        }
+
+        function prevQuiz() {
+            if (currentQuizIdx > 0) {
+                currentQuizIdx--;
+                renderQuizQuestion();
+            }
+        }
+
+        function nextQuiz() {
+            if (quizUserAnswers[currentQuizIdx] === null) {
+                alert("Silakan pilih salah satu jawaban terlebih dahulu!");
+                return;
+            }
+
+            if (currentQuizIdx < quizQuestions.length - 1) {
+                currentQuizIdx++;
+                renderQuizQuestion();
+            } else {
+                calculateQuizResult();
+            }
+        }
+
+        function calculateQuizResult() {
+            let correctCount = 0;
+            quizQuestions.forEach((q, idx) => {
+                if (quizUserAnswers[idx] === q.answer) {
+                    correctCount++;
+                }
+            });
+
+            const finalScore = Math.round((correctCount / quizQuestions.length) * 100);
+
+            document.getElementById('quizBox').classList.add('hidden');
+            document.getElementById('quizResultBox').classList.remove('hidden');
+
+            document.getElementById('finalScoreText').innerText = finalScore;
+            document.getElementById('correctAnswersText').innerText = correctCount;
+            document.getElementById('wrongAnswersText').innerText = quizQuestions.length - correctCount;
+
+            const motivation = document.getElementById('motivationBox');
+            const badge = document.getElementById('resultBadge');
+
+            if (finalScore >= 80) {
+                playSound('correct');
+                badge.className = "w-24 h-24 rounded-full mx-auto flex items-center justify-center text-5xl mb-4 bg-emerald-100 text-emerald-600 shadow-xl";
+                badge.innerText = "🌟";
+                motivation.className = "p-4 rounded-xl max-w-md mx-auto text-xs sm:text-sm font-semibold mb-8 bg-emerald-50 border border-emerald-200 text-emerald-900";
+                motivation.innerHTML = "Sangat Luar Biasa! Kamu telah memahami konsep norma dengan sangat baik dan siap menjadi agen warga berkarakter Pancasila!";
+            } else if (finalScore >= 60) {
+                playSound('correct');
+                badge.className = "w-24 h-24 rounded-full mx-auto flex items-center justify-center text-5xl mb-4 bg-amber-100 text-amber-600 shadow-xl";
+                badge.innerText = "👍";
+                motivation.className = "p-4 rounded-xl max-w-md mx-auto text-xs sm:text-sm font-semibold mb-8 bg-amber-50 border border-amber-200 text-amber-900";
+                motivation.innerHTML = "Bagus Sekali! Pemahamanmu tentang norma sudah cukup baik. Pelajari kembali poin-poin materi untuk hasil yang sempurna!";
+            } else {
+                playSound('wrong');
+                badge.className = "w-24 h-24 rounded-full mx-auto flex items-center justify-center text-5xl mb-4 bg-rose-100 text-rose-600 shadow-xl";
+                badge.innerText = "💪";
+                motivation.className = "p-4 rounded-xl max-w-md mx-auto text-xs sm:text-sm font-semibold mb-8 bg-rose-50 border border-rose-200 text-rose-900";
+                motivation.innerHTML = "Jangan Berkecil Hati! Tetap semangat belajar. Kamu dapat mengulang materi dan menguji pemahamanmu kembali!";
+            }
+        }
+
+        function restartQuiz() {
+            currentQuizIdx = 0;
+            quizUserAnswers = new Array(quizQuestions.length).fill(null);
+            document.getElementById('quizResultBox').classList.add('hidden');
+            document.getElementById('quizBox').classList.remove('hidden');
+            renderQuizQuestion();
+        }
+
+        /* ==========================================================================
+           REFLEKSI FORM ENGINE
+           ========================================================================== */
+        function handleRefleksiSubmit(event) {
+            event.preventDefault();
+            playSound('correct');
+            document.getElementById('refleksiForm').classList.add('hidden');
+            document.getElementById('refleksiSavedMsg').classList.remove('hidden');
+        }
+
+        /* ==========================================================================
+           INITIALIZATION ON LOAD
+           ========================================================================== */
+        window.onload = function() {
+            renderCase();
+            renderGameLevel();
+            renderQuizQuestion();
+        };
+    </script>
+</body>
+</html>
